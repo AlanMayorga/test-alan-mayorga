@@ -1,0 +1,129 @@
+<style>
+  .banner-section {
+    font-family: 'Helvetica Neue', sans-serif;
+    height: 100dvh;
+
+    .img-banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .banner-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: inherit;
+      padding: 0 20px;
+
+      @media (width > 860px) {
+        padding-left: 132px;
+      }
+
+      .title {
+        max-width: 709px;
+        font-size: 53px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.28;
+        letter-spacing: -0.05px;
+        color: #fff;
+        margin: 0;
+        margin-bottom: 27px;
+        text-wrap: pretty;
+
+        strong {
+          color: var(--sickly-yellow);
+          font-weight: bold;
+        }
+      }
+
+      a {
+        font-size: 13px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.15;
+        letter-spacing: 1.01px;
+        width: fit-content;
+        padding: 15px 30px;
+        border-radius: 26.5px;
+        border: solid 1px #fff;
+        background: transparent;
+        color: #fff;
+        text-decoration: none;
+
+        svg path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+</style>
+
+<section class="banner-info">
+  <h1 class="title">Las mejores raquetas para jugar <strong>Tennis</strong></h1>
+  <a href="{{ section.settings.btn_url }}">
+    {{ section.settings.btn_text }}
+    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="6" viewBox="0 0 23 6">
+      <path fill="#29304A" fill-rule="evenodd" d="M22.908 2.7L20.428.128a.39.39 0 0 0-.579 0 .425.425 0 0 0 0 .6l1.778 1.843H.413C.165 2.57 0 2.74 0 3c0 .257.165.428.413.428h21.213l-1.779 1.844a.425.425 0 0 0 0 .6.44.44 0 0 0 .29.128.44.44 0 0 0 .289-.129l2.48-2.572a.531.531 0 0 0 .002-.6z"/>
+    </svg>
+  </a>
+</section>
+
+<div class="img-banner">
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url | image_tag: alt: 'Banner image' }}
+  {%- else -%}
+    <img src="{{ 'group.png' | asset_url }}" alt="Banner image" width="1440" height="791">
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image-banner.name",
+  "class": "banner-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image banner"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Banner title",
+      "default": "Las mejores raquetas para jugar"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_text",
+      "label": "Texto resaltado",
+      "default": "Tennis"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Text button",
+      "default": "ACERCA DE NOSOTROS"
+    }
+  ]
+}
+{% endschema %}

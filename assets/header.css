@@ -1,0 +1,130 @@
+.header-blur {
+    font-family: 'Helvetica Neue', sans-serif;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    color: #fff;
+
+    animation: header-shadow 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 300px;
+
+    .logo {
+        margin-top: 25px;
+        margin-left: 36px;
+    }
+
+    .header-nav {
+        display: flex;
+        justify-content: space-between;
+        flex: 2;
+
+        margin-top: 44px;
+        margin-bottom: 34px;
+        margin-left: 62px;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 10px;
+
+            &:not(:last-of-type) {
+                margin-right: 54px;
+            }
+
+            &::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 4px;
+                border-bottom: 1px solid #fff;
+
+                transform: scaleX(0);
+                transform-origin: bottom right;
+                transition: transform .4s ease;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+        }
+    }
+
+    .header-nav-lang {
+        margin-right: 94px;
+
+        span {
+            cursor: pointer;
+        }
+
+        span:not(:last-of-type) {
+            margin-right: 8px;
+        }
+    }
+
+    .btn-menu-open {
+        display: none;
+        margin-top: 25px;
+        margin-right: 36px;
+    }
+
+    .btn-menu-close {
+        display: none;
+        position: absolute;
+        margin-top: 0px;
+        margin-right: 20px;
+        right: 0;
+    }
+}
+
+@media (width < 860px) {
+    .header-blur {
+        justify-content: space-between;
+        padding-bottom: 25px;
+
+        .header-nav {
+            position: absolute;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 20px;
+            transform: translateY(-100%);
+            transition: transform .3s ease;
+
+            &.open {
+                transform: translateY(0);
+            }
+        }
+
+        .header-nav-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn-menu-open {
+            display: block;
+            align-self: center;
+            cursor: pointer;
+        }
+
+        .btn-menu-close {
+            display: block;
+        }
+    }
+}
+
+@keyframes header-shadow {
+    to {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+    }
+}

@@ -1,0 +1,90 @@
+<style>
+  .footer {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: var(--sickly-yellow);
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 64px 77px;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 451px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 1.14px;
+        color: var(--dark-two);
+      }
+
+      .footer-menu {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 12px;
+      }
+    }
+  }
+
+  @media (width < 860px) {
+    .footer {
+      nav {
+        width: 340px;
+      }
+    }
+  }
+
+  @media (width < 640px) {
+    .footer .footer-container {
+      margin: 18px 20px;
+
+      .footer-menu {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  }
+</style>
+
+<section class="footer-container">
+  <nav>
+    <div class="footer-menu">
+      <a>Inicio</a>
+      <a>Acerca de nosotros</a>
+      <a>Historia</a>
+      <a>Contacto</a>
+    </div>
+    <div class="footer-social">
+      <a><img src="{{ 'linkedin.svg' | asset_url }}" alt="LinkedIn icon" width="31" height="31"></a>
+      <a><img src="{{ 'v.svg' | asset_url }}" alt="V icon" width="31" height="31"></a>
+      <a><img src="{{ 'instagram.svg' | asset_url }}" alt="Instagram icon" width="31" height="31"></a>
+      <a><img src="{{ 'twitter.svg' | asset_url }}" alt="Twitter icon" width="31" height="31"></a>
+      <a><img src="{{ 'facebook.svg' | asset_url }}" alt="Facebook icon" width="31" height="31"></a>
+    </div>
+  </nav>
+  <div>
+    <img src="{{ 'fill-2.svg' | asset_url }}" alt="Image section" width="55" height="55">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "footer",
+  "class": "footer",
+  "tag": "footer",
+  "settings": []
+}
+{% endschema %}

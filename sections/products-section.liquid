@@ -1,0 +1,129 @@
+{{ 'products-section-home.css' | asset_url | stylesheet_tag }}
+
+<!-- Slider main container -->
+<div class="products-section-slider">
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {% for block in section.blocks %}
+        {% if block.type == 'slide' %}
+          <div class="swiper-slide">
+            <h2>
+              Nuestras <br>
+              <strong>Raquetas</strong>
+            </h2>
+            <p>{{ block.settings.text }}</p>
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url }}" alt="Product image" width="288" height="344">
+            {% else %}
+              <img src="{{ 'ball-color-court.png' | asset_url }}" alt="Product image" width="530" height="468">
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+      ...
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</div>
+
+{% assign i = 1 %}
+<div class="products-slider">
+  {% for block in section.blocks %}
+    {% if block.type == 'product-card' %}
+      <div class="product-content">
+        <span class="product-content-count">{{ i }}</span>
+        {% assign i = i | plus: 1 %}
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | image_url }}" alt="Product image" width="288" height="344">
+        {% else %}
+          <img src="{{ 'group-10.png' | asset_url }}" alt="Product image" width="288" height="344">
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<script type="module" defer>
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Products section",
+  "tag": "section",
+  "class": "products-section-wrapper",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen de slider"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto de slider",
+          "default": "Conoce nuestras raquetas y aprende a jugar Tennis cómo un profesional."
+        }
+      ]
+    },
+    {
+      "type": "product-card",
+      "name": "Bloque de producto",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del producto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Section Home",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "product-card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

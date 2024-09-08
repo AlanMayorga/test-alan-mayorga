@@ -1,0 +1,31 @@
+<style>
+  .image-section {
+    display: flex;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
+
+{% if section.settings.image != blank %}
+  {{ section.settings.image | image_url | image_tag }}
+{% else %}
+  <img src="{{ 'action-athlete-ball.png' | asset_url }}" alt="Image section" width="1440" height="586" loading="lazy">
+{% endif %}
+
+{% schema %}
+{
+  "name": "Image section",
+  "class": "image-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    }
+  ]
+}
+{% endschema %}
