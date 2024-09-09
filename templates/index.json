@@ -12,6 +12,10 @@
     "image_banner": {
       "type": "new-img-banner",
       "settings": {
+        "title": "Las mejores raquetas para jugar",
+        "highlighted_text": "Tennis",
+        "btn_url": "",
+        "btn_text": "ACERCA DE NOSOTROS"
       }
     },
     "info": {
@@ -21,6 +25,49 @@
     },
     "featured_collection": {
       "type": "products-section",
+      "blocks": {
+        "slide_eVDpeF": {
+          "type": "slide",
+          "settings": {
+            "text": "Conoce nuestras raquetas y aprende a jugar Tennis cómo un profesional."
+          }
+        },
+        "slide_36nKtX": {
+          "type": "slide",
+          "settings": {
+            "text": "Conoce nuestras raquetas y aprende a jugar Tennis cómo un profesional."
+          }
+        },
+        "slide_xTKhgY": {
+          "type": "slide",
+          "settings": {
+            "text": "Conoce nuestras raquetas y aprende a jugar Tennis cómo un profesional."
+          }
+        },
+        "product_card_PxRmwK": {
+          "type": "product-card",
+          "settings": {
+          }
+        },
+        "product_card_Cdf9a4": {
+          "type": "product-card",
+          "settings": {
+          }
+        },
+        "product_card_REiW9V": {
+          "type": "product-card",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "slide_eVDpeF",
+        "slide_36nKtX",
+        "slide_xTKhgY",
+        "product_card_PxRmwK",
+        "product_card_Cdf9a4",
+        "product_card_REiW9V"
+      ],
       "settings": {
       }
     },
